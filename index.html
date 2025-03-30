@@ -125,42 +125,7 @@
     <div class="container py-3">
         <div class="row justify-content-center py-3">
             <div class="col-lg-10 pt-lg-3 mt-lg-3 text-center">
-                <h1 class="display-3 text-white" id="typewriter-heading"></h1>
-
-<style>
-    /* Typewriter cursor effect */
-    #typewriter-heading::after {
-        content: '';
-        animation: none;
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const text = "Reliable Homework Help";
-        const heading = document.getElementById('typewriter-heading');
-        let i = 0;
-        
-        function typeWriter() {
-            if (i < text.length) {
-                heading.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100); // Adjust typing speed here (100ms per character)
-            }
-        }
-        
-        // Start typing effect when element is in viewport
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                typeWriter();
-                observer.disconnect();
-            }
-        });
-        
-        observer.observe(heading);
-    });
-</script>
-
+                <h1 class="display-3 text-white animated slideInDown">Reliable Homework Help</h1>
                 <p class="fs-4 text-white mb-4 animated slideInDown">Your success begins here!</p>
                 <div class="position-relative w-75 mx-auto animated slideInDown">
                     <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="What subject do you need help with?">
