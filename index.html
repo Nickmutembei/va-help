@@ -62,9 +62,9 @@
     <div class="container">
         <!-- Brand/Logo -->
         <a href="index.html" class="navbar-brand d-flex align-items-center me-auto">
-            <i class="fas fa-graduation-cap fa-3x me-3" style="color: #0b69a8;"></i> <!-- Increased icon size -->
+            <i class="fas fa-graduation-cap fa-3x me-3" style="color: #2b435c;"></i> <!-- Increased icon size -->
             <div>
-                <h2 class="m-0 fw-bold" style="background: linear-gradient(to right, orange, blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Virtual Academia</h2> <!-- Changed from h3 to h2 -->
+                <h2 class="m-0 fw-bold" style="background: linear-gradient(to right, rgb(167, 110, 4), blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Virtual Academia</h2> <!-- Changed from h3 to h2 -->
                 <small class="d-none d-lg-block" style="color: #6c757d; font-size: 1rem;">Premium Homework Assistance</small> <!-- Increased font size -->
             </div>
         </a>
@@ -221,12 +221,13 @@
                         <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Expert Support</p>
                     </div>
                 </div>
-                <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="https://wa.me/+12815070243">Read More</a>
             </div>
         </div>
     </div>
 </div>
 <!-- About End -->
+
 
 <!-- Process Start -->
 <div class="container-xxl py-5">
@@ -238,7 +239,8 @@
         <div class="row g-0 justify-content-center align-items-center flex-nowrap">
             <!-- Step 1 -->
             <div class="col-auto wow fadeInUp" data-wow-delay="0.1s" style="flex: 0 0 28%; max-width: 28%;">
-                <div class="process-item text-center p-3">
+                <div class="process-item text-center p-3 position-relative glow-hover">
+                    <div class="glow-effect"></div>
                     <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
                         <img alt="Order form" class="img-fluid" src="https://storage.googleapis.com/a1aa/image/lOX123sFXLkw8ii6R30usomesXp8sE5Cj2ZnyVrytj0.jpg" width="40"/>
                     </div>
@@ -256,7 +258,8 @@
             
             <!-- Step 2 -->
             <div class="col-auto wow fadeInUp" data-wow-delay="0.3s" style="flex: 0 0 28%; max-width: 28%;">
-                <div class="process-item text-center p-3">
+                <div class="process-item text-center p-3 position-relative glow-hover">
+                    <div class="glow-effect"></div>
                     <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
                         <img alt="Payment" class="img-fluid" src="https://storage.googleapis.com/a1aa/image/SRNdzNjew93eMjR2qn6tLlcfSk7HqwxlIGjte5XZ6dc.jpg" width="40"/>
                     </div>
@@ -274,7 +277,8 @@
             
             <!-- Step 3 -->
             <div class="col-auto wow fadeInUp" data-wow-delay="0.5s" style="flex: 0 0 28%; max-width: 28%;">
-                <div class="process-item text-center p-3">
+                <div class="process-item text-center p-3 position-relative glow-hover">
+                    <div class="glow-effect"></div>
                     <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px;">
                         <img alt="Solution" class="img-fluid" src="https://storage.googleapis.com/a1aa/image/lOX123sFXLkw8ii6R30usomesXp8sE5Cj2ZnyVrytj0.jpg" width="40"/>
                     </div>
@@ -285,6 +289,45 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Glow Effect Styles */
+    .glow-hover {
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    .glow-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(13,110,253,0.1) 0%, rgba(0,0,0,0) 70%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    .glow-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .glow-hover:hover .glow-effect {
+        opacity: 1;
+    }
+    
+    .process-item {
+        position: relative;
+        z-index: 1;
+        background: white;
+        border-radius: 10px;
+        height: 100%;
+    }
+</style>
 <!-- Process End -->
 
 <style>
@@ -441,157 +484,248 @@
     }
 </style>
     
-    
-    <!-- Courses Start -->
-    <div class="container-xxl py-5" id="courses">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
-                <h1 class="mb-5">Popular Courses</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/course-1.jpg" alt="Web Development Course">
-                         
-                        </div>
-                        <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">$399.00</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small>(123)</small>
-                            </div>
-                            <h5 class="mb-4">Web Design & Development Course</h5>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>Nick Mutembei</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>2Hrs/session</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/course-2.jpg" alt="Data Science Course">
-                         
-                        </div>
-                        <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">$299.00</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small>(145)</small>
-                            </div>
-                            <h5 class="mb-4">Data Science Fundamentals</h5>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>Ms.Olivia Shee</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1Hr/session</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>45 Students</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/course-3.jpg" alt="Business Course">
-                        
-                        </div>
-                        <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">$199.00</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star-half-alt text-primary"></small>
-                                <small>(98)</small>
-                            </div>
-                            <h5 class="mb-4">Statistics, Economics & Business Administration</h5>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>Ms.Alex Keating</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.30Hrs/session</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>25 Students</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+   <!-- Courses Start -->
+<div class="container-xxl py-5" id="courses">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
+            <h1 class="mb-5">Popular Courses</h1>
         </div>
-    </div>
-    <!-- Courses End -->
-     
-    <!-- Service Start -->
-    <div class="container-xxl py-5" id="service">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Services</h6>
-                <h1 class="mb-5">Why Choose Us!</h1>
-            </div>
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-7">
-                    <div class="row g-4">
-                        <!-- First Row - 2 Services -->
-                        <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="service-item text-center pt-3 h-100">
-                                <div class="p-4">
-                                    <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                                    <h5 class="mb-3">Expert Instructors</h5>
-                                    <p>Our experts have extensive experience and proven track records.</p>
-                                </div>
-                            </div>
+        <div class="row g-4 justify-content-center">
+            <!-- Course 1 -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item bg-light">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid" src="img/course-1.jpg" alt="Web Development Course">
+                    </div>
+                    <div class="text-center p-4 pb-0">
+                        <h3 class="mb-0">$399.00</h3>
+                        <div class="mb-3">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small>(123)</small>
                         </div>
-                        <div class="col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="service-item text-center pt-3 h-100">
-                                <div class="p-4">
-                                    <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                    <h5 class="mb-3">24/7 Customer Support</h5>
-                                    <p>Our dedicated support team is available around the clock to assist you.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Second Row - 2 Services -->
-                        <div class="col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="service-item text-center pt-3 h-100">
-                                <div class="p-4">
-                                    <i class="fa fa-3x fa-clock text-primary mb-4"></i>
-                                    <h5 class="mb-3">Affordable rates & On-Time Deliveries </h5>
-                                    <p>We ensure that all your assignments are delivered promptly, without compromising quality. Our prices are unbeaten and super-friendly</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                            <div class="service-item text-center pt-3 h-100">
-                                <div class="p-4">
-                                    <i class="fa fa-3x fa-check text-primary mb-4"></i>
-                                    <h5 class="mb-3">Plagiarism and AI Free Work</h5>
-                                    <p>All our work is original and crafted to meet your specific needs, ensuring authenticity.</p>
-                                </div>
-                            </div>
+                        <h5 class="mb-4">Web Design & Development Course</h5>
+                        <div class="course-details" style="display: none;">
+                            <p>Learn full-stack web development with HTML, CSS, JavaScript, and popular frameworks. Build responsive websites and web applications.</p>
+                            <ul class="text-start">
+                                <li>Front-end development</li>
+                                <li>Back-end programming</li>
+                                <li>Database integration</li>
+                                <li>Deployment strategies</li>
+                            </ul>
                         </div>
                     </div>
+                    <div class="d-flex border-top">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>Nick Mutembei</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>2Hrs/session</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
+                    </div>
+                    <div class="text-center p-3">
+                        <button class="btn btn-primary read-more-btn" onclick="toggleCourseDetails(this)">Read More</button>
+                    </div>
                 </div>
+            </div>
 
-       <!-- Image Column -->
-<div class="col-lg-5 wow fadeInRight" data-wow-delay="0.5s">
-    <div class="position-relative h-100" style="min-height: 300px;">
-        <img class="img-fluid position-absolute w-100 h-100" src="img/service.png" alt="Our Services" style="object-fit: cover; border-radius: 50%; box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);">
-    </div>
-</div>
+            <!-- Course 2 -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="course-item bg-light">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid" src="img/course-2.jpg" alt="Data Science Course">
+                    </div>
+                    <div class="text-center p-4 pb-0">
+                        <h3 class="mb-0">$299.00</h3>
+                        <div class="mb-3">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small>(145)</small>
+                        </div>
+                        <h5 class="mb-4">Data Science & Analytics Fundamentals</h5>
+                        <div class="course-details" style="display: none;">
+                            <p>Master the fundamentals of data analysis, machine learning, and data visualization. Work with real-world datasets and Python libraries.</p>
+                            <ul class="text-start">
+                                <li>Python for data science</li>
+                                <li>Statistical analysis</li>
+                                <li>Machine learning basics</li>
+                                <li>Data visualization techniques</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>Ms.Olivia Shee</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1Hr/session</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>45 Students</small>
+                    </div>
+                    <div class="text-center p-3">
+                        <button class="btn btn-primary read-more-btn" onclick="toggleCourseDetails(this)">Read More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="course-item bg-light">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid" src="img/course-3.jpg" alt="Business Course">
+                    </div>
+                    <div class="text-center p-4 pb-0">
+                        <h3 class="mb-0">$199.00</h3>
+                        <div class="mb-3">
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star text-primary"></small>
+                            <small class="fa fa-star-half-alt text-primary"></small>
+                            <small>(98)</small>
+                        </div>
+                        <h5 class="mb-4">Statistics, Economics & Business Administration</h5>
+                        <div class="course-details" style="display: none;">
+                            <p>Gain essential knowledge in business statistics, economic principles, and administration strategies for modern organizations.</p>
+                            <ul class="text-start">
+                                <li>Business statistics</li>
+                                <li>Micro and macroeconomics</li>
+                                <li>Organizational management</li>
+                                <li>Financial accounting basics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex border-top">
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>Ms.Alex Keating</small>
+                        <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.30Hrs/session</small>
+                        <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>25 Students</small>
+                    </div>
+                    <div class="text-center p-3">
+                        <button class="btn btn-primary read-more-btn" onclick="toggleCourseDetails(this)">Read More</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- Service End -->
+<!-- Courses End -->
+
+<script>
+function toggleCourseDetails(button) {
+    const courseItem = button.closest('.course-item');
+    const details = courseItem.querySelector('.course-details');
+    const isHidden = details.style.display === 'none';
+    
+    details.style.display = isHidden ? 'block' : 'none';
+    button.textContent = isHidden ? 'Read Less' : 'Read More';
+    
+    // Smooth scroll to show the expanded content
+    if (isHidden) {
+        details.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+}
+</script>
+<!-- Services Section - Modern Design -->
+<section class="services-section py-5" id="">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2 class="fw-bold display-5 mb-3">Why choose us?</h2>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;">We deliver premium services tailored to your unique needs with unmatched quality and care.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Service Card 1 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card service-card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-box bg-primary-soft text-primary rounded-circle mx-auto mb-4">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Expert Instructors</h5>
+                        <p class="text-muted">Industry professionals with 10+ years experience guiding your success.</p>
+                        <a href="#contact" class="btn btn-link text-primary p-0 mt-2">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card service-card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-box bg-primary-soft text-primary rounded-circle mx-auto mb-4">
+                            <i class="fas fa-clock fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Timely Delivery</h5>
+                        <p class="text-muted">97% on-time completion rate with quality assurance at every step.</p>
+                        <a href="#contact" class="btn btn-link text-primary p-0 mt-2">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card service-card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-box bg-primary-soft text-primary rounded-circle mx-auto mb-4">
+                            <i class="fas fa-shield-alt fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">100% Original Work</h5>
+                        <p class="text-muted">Plagiarism-free solutions with detailed authenticity reports.</p>
+                        <a href="#contact" class="btn btn-link text-primary p-0 mt-2">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card service-card h-100 border-0 shadow-sm hover-lift">
+                    <div class="card-body p-4 text-center">
+                        <div class="icon-box bg-primary-soft text-primary rounded-circle mx-auto mb-4">
+                            <i class="fas fa-headset fa-2x"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">24/7 Support</h5>
+                        <p class="text-muted">Dedicated support team available round the clock via multiple channels.</p>
+                        <a href="#contact" class="btn btn-link text-primary p-0 mt-2">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .services-section {
+        background-color: #f8f9fa;
+    }
+    .icon-box {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    .service-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 12px;
+        overflow: hidden;
+        background: white;
+    }
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1) !important;
+    }
+    .service-card:hover .icon-box {
+        background-color: #0bc5b6 !important;
+        color: white !important;
+    }
+    .hover-lift:hover {
+        transform: translateY(-5px);
+    }
+    .bg-primary-soft {
+        background-color: rgba(13, 110, 253, 0.1);
+    }
+</style>
 
 <!-- Achievement Counter Start -->
 <div class="container-xxl py-5 bg-light">
@@ -622,7 +756,7 @@
                 <div class="p-4 rounded shadow-sm bg-white">
                     <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
                     <h2 class="counter-value" data-target="890">0</h2>
-                    <p class="mb-0 fw-bold">Courses Assisted</p>
+                    <p class="mb-0 fw-bold">Courses Completed</p>
                     <small class="text-muted">Subjects we've covered</small>
                 </div>
             </div>
@@ -720,7 +854,7 @@
                                 <i class="fas fa-user-plus me-2"></i>Hire Writer
                             </a>
                         </div>
-                        <p class="mt-2" style="color: rgb(2248, 132, 0);">1276+ Projects Completed</p>
+                        <p class="mt-2" style="color: rgb(2248, 132, 0);">★★★★★</p>
                     </div>
                 </div>
             </div>
@@ -740,7 +874,7 @@
                                 <i class="fas fa-user-plus me-2"></i>Hire Writer
                             </a>
                         </div>
-                        <p class="mt-2" style="color: rgb(248, 132, 0);">1084+ Projects Completed</p>
+                        <p class="mt-2" style="color: rgb(2248, 132, 0);">★★★★★</p>
                     </div>
                 </div>
             </div>
@@ -759,9 +893,8 @@
                             <a class="btn btn-primary mx-1" href="https://wa.me/254742396488">
                                 <i class="fas fa-user-plus me-2"></i>Hire Writer
                             </a>
-                        </div>
-                        <p class="mt-2" style="color: rgb(248, 132, 0);">1246+ Projects Completed</p>
                     </div>
+                    <p class="mt-2" style="color: rgb(2248, 132, 0);">★★★★★</p>
                 </div>
             </div>
         </div>
