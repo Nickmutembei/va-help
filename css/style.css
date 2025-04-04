@@ -97,7 +97,7 @@ body {
     max-width: var(--content-max-width);
     margin: 0 auto;
     padding: 0 var(--side-margin);
-    height: 80px; /* Increased from implicit 75px */
+    height: 100px; /* Increased from implicit 75px */
 }
 
 .navbar-light .navbar-brand,
