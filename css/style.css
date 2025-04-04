@@ -1,3 +1,4 @@
+
 /********** Template CSS **********/
 :root {
     --primary: #06BBCC;
@@ -196,7 +197,6 @@ body {
 .header-carousel .owl-nav .owl-next:hover {
     background: var(--primary);
     border-color: var(--primary);
-    opacity: 1;
 }
 
 /* Page Header Styles */
@@ -497,3 +497,4 @@ body {
     padding-right: 0;
     border-right: none;
 }
+
