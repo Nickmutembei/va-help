@@ -852,7 +852,6 @@ function toggleCourseDetails(button) {
                                 <i class="fas fa-user-plus me-2"></i>Hire Writer
                             </a>
                         </div>
-                        <p class="mt-2" style="color: rgb(2248, 132, 0);">★★★★★</p>
                     </div>
                 </div>
             </div>
@@ -871,7 +870,6 @@ function toggleCourseDetails(button) {
                                 <i class="fas fa-user-plus me-2"></i>Hire Writer
                             </a>
                         </div>
-                        <p class="mt-2" style="color: rgb(2248, 132, 0);">★★★★★</p>
                     </div>
                 </div>
             </div>
@@ -890,7 +888,6 @@ function toggleCourseDetails(button) {
                                 <i class="fas fa-user-plus me-2"></i>Hire Writer
                             </a>
                     </div>
-                    <p class="mt-2" style="color: rgb(2248, 132, 0);">★★★★★</p>
                 </div>
             </div>
         </div>
@@ -1063,7 +1060,6 @@ function toggleCourseDetails(button) {
         100% { transform: translateX(-50%); } /* Move by half the width of the container */
     }
 </style>
-
 <!-- Contact Us Section -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
     <div class="container">
@@ -1091,14 +1087,22 @@ function toggleCourseDetails(button) {
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label d-block">Phone Number</label>
-                            <div class="input-group">
-                                <span class="input-group-text p-0">
-                                    <select class="form-select border-end-0 rounded-end-0" id="countryCode" style="width: 100px;" required></select>
-                                </span>
-                                <input type="tel" class="form-control rounded-start-0" id="phone" placeholder="Phone Number" required pattern="[0-9]+">
+                            <div class="form-floating">
+                                <select class="form-select" id="course" required>
+                                    <option value="" selected disabled>Select a course/subject</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Business Studies">Business Studies</option>
+                                    <option value="Economics">Economics</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <label for="course">Course/Subject</label>
+                                <div class="invalid-feedback">Please select a course/subject.</div>
                             </div>
-                            <div class="invalid-feedback">Please provide a valid phone number.</div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
@@ -1112,16 +1116,14 @@ function toggleCourseDetails(button) {
                             <button type="submit" class="btn btn-primary btn-sm mx-2 glow-icon" name="contactMethod" value="whatsapp">
                                 <i class="fab fa-whatsapp me-2"></i> WhatsApp
                             </button>
-                       <!-- Email Button -->
-<button type="submit" class="btn btn-danger btn-sm mx-2 glow-icon" name="contactMethod" value="email">
-    <i class="fas fa-envelope me-2"></i> Email
-</button>
-
-<!-- Fiverr Button with Logo -->
-<a href="https://www.fiverr.com/s/WEz8A3X" target="_blank" class="btn btn-success btn-sm mx-2 glow-icon fiverr">
-    <img src="img/fiverr.png" alt="Fiverr" style="height: 1rem; margin-right: 0.5rem;"> Fiverr
-</a>
-
+                            <!-- Email Button -->
+                            <button type="submit" class="btn btn-danger btn-sm mx-2 glow-icon" name="contactMethod" value="email">
+                                <i class="fas fa-envelope me-2"></i> Email
+                            </button>
+                            <!-- Fiverr Button with Logo -->
+                            <a href="https://www.fiverr.com/s/WEz8A3X" target="_blank" class="btn btn-success btn-sm mx-2 glow-icon fiverr">
+                                <img src="img/fiverr.png" alt="Fiverr" style="height: 1rem; margin-right: 0.5rem;"> Fiverr
+                            </a>
                         </div>
                     </div>
                 </form>
@@ -1130,51 +1132,6 @@ function toggleCourseDetails(button) {
         
         <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const countryCodeSelect = document.getElementById('countryCode');
-        
-            fetch('https://restcountries.com/v3.1/all')
-                .then(response => response.json())
-                .then(data => {
-                    const countries = data
-                        .map(country => {
-                            const code3 = country.cca3; 
-                            const dialRoot = country.idd?.root;
-                            const suffixes = country.idd?.suffixes;
-                            if (code3 && dialRoot && suffixes && suffixes.length > 0) {
-                                return {
-                                    code: code3,
-                                    dial: dialRoot + suffixes[0]
-                                };
-                            }
-                            return null;
-                        })
-                        .filter(Boolean)
-                        .sort((a, b) => a.code.localeCompare(b.code));
-        
-                    countries.forEach(({ code, dial }) => {
-                        const option = document.createElement('option');
-                        option.value = dial;
-                        option.textContent = `${code} (${dial})`;
-                        countryCodeSelect.appendChild(option);
-                    });
-                })
-                .catch(() => {
-                    const fallback = [
-                        { code: 'USA', dial: '+1' },
-                        { code: 'GBR', dial: '+44' },
-                        { code: 'IND', dial: '+91' },
-                        { code: 'NGA', dial: '+234' },
-                        { code: 'DEU', dial: '+49' },
-                        { code: 'FRA', dial: '+33' }
-                    ];
-                    fallback.forEach(({ code, dial }) => {
-                        const option = document.createElement('option');
-                        option.value = dial;
-                        option.textContent = `${code} (${dial})`;
-                        countryCodeSelect.appendChild(option);
-                    });
-                });
-        
             const contactForm = document.getElementById('contactForm');
             contactForm.addEventListener('submit', function (event) {
                 event.preventDefault();
@@ -1183,19 +1140,19 @@ function toggleCourseDetails(button) {
                 if (contactForm.checkValidity()) {
                     const formData = {
                         name: document.getElementById('name').value,
-                        phone: document.getElementById('countryCode').value + document.getElementById('phone').value,
+                        course: document.getElementById('course').value,
                         message: document.getElementById('message').value,
                         contactMethod: event.submitter.value
                     };
         
                     const encodedMessage = encodeURIComponent(
-                        `Name: ${formData.name}\nPhone: ${formData.phone}\n\nMessage: ${formData.message}`
+                        `Name: ${formData.name}\nCourse/Subject: ${formData.course}\n\nMessage: ${formData.message}`
                     );
         
                     if (formData.contactMethod === 'whatsapp') {
                         window.location.href = `https://wa.me/12815070243?text=${encodedMessage}`;
                     } else {
-                        window.location.href = `mailto:virtualacademia@yahoo.com?subject=Contact%20Request&body=${encodedMessage}`;
+                        window.location.href = `mailto:virtualacademia@yahoo.com?subject=Contact%20Request%20for%20${encodeURIComponent(formData.course)}&body=${encodedMessage}`;
                     }
                 }
         
@@ -1211,15 +1168,6 @@ function toggleCourseDetails(button) {
                 background-image: none !important;
                 border-color: inherit;
                 box-shadow: none;
-            }
-        
-            /* Input group and select tweaks */
-            .input-group-text {
-                background-color: transparent;
-                border-right: none;
-            }
-            .form-select {
-                background-position: right 0.5rem center;
             }
         
             /* Base icon glow transition */
@@ -1246,43 +1194,9 @@ function toggleCourseDetails(button) {
             .glow-icon.whatsapp:hover i {
                 text-shadow: 0 0 8px rgba(37, 211, 102, 0.6), 0 0 12px rgba(37, 211, 102, 0.4);
             }
-        
-            /* Tooltip container */
-            .icon-tooltip {
-                position: relative;
-                display: inline-block;
-                cursor: pointer;
-            }
-        
-            /* Tooltip text */
-            .icon-tooltip .tooltip-text {
-                visibility: hidden;
-                width: max-content;
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                padding: 4px 8px;
-                border-radius: 4px;
-                position: absolute;
-                bottom: 125%;
-                left: 50%;
-                transform: translateX(-50%);
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                font-size: 0.75rem;
-                white-space: nowrap;
-                z-index: 10;
-            }
-        
-            /* Show tooltip on hover */
-            .icon-tooltip:hover .tooltip-text {
-                visibility: visible;
-                opacity: 1;
-            }
         </style>
-        
-  <!-- Contact Us Section end  -->
-
+</div>
+<!-- Contact Us Section end -->
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" id="contact">
