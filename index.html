@@ -1060,6 +1060,7 @@ function toggleCourseDetails(button) {
         100% { transform: translateX(-50%); } /* Move by half the width of the container */
     }
 </style>
+
 <!-- Contact Us Section -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
     <div class="container">
@@ -1074,11 +1075,12 @@ function toggleCourseDetails(button) {
                 <div style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 20px solid #f1f1f1;"></div>
             </div>
         </div>
-        
+
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 shadow p-4">
                 <form id="contactForm" class="needs-validation" novalidate>
                     <div class="row g-3">
+                        <!-- Name -->
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="name" placeholder="Your Name" required pattern="[A-Za-z\s]+">
@@ -1086,24 +1088,27 @@ function toggleCourseDetails(button) {
                                 <div class="invalid-feedback">Please provide your name.</div>
                             </div>
                         </div>
+
+                        <!-- Subject Dropdown -->
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <select class="form-select" id="course" required>
-                                    <option value="" selected disabled>Select a course/subject</option>
-                                    <option value="Mathematics">Mathematics</option>
-                                    <option value="Physics">Physics</option>
-                                    <option value="Chemistry">Chemistry</option>
-                                    <option value="Biology">Biology</option>
-                                    <option value="Computer Science">Computer Science</option>
-                                    <option value="Engineering">Engineering</option>
-                                    <option value="Business Studies">Business Studies</option>
-                                    <option value="Economics">Economics</option>
-                                    <option value="Other">Other</option>
+                                <select class="form-select" id="subject" required>
+                                    <option value="" disabled selected>Select a Subject</option>
+                                    <option value="Calculus & Advanced Math">Calculus & Advanced Math</option>
+                                    <option value="Physics (All Levels)">Sciences (Chemistry, Biology & Physics)</option>
+                                    <option value="Organic Chemistry"> Chemistry</option>
+                                    <option value="Molecular Biology">Nursing & Biology</option>
+                                    <option value="Academic Writing & Research">Academic Writing & Research</option>
+                                    <option value="Programming (Python/Java)">Programming (R studio/SPSS/Tableau)</option>
+                                    <option value="Statistics & Data Analysis">Statistics & Data Analysis</option>
+                                    <option value="Business & Finance">Business & Finance</option>
                                 </select>
-                                <label for="course">Course/Subject</label>
-                                <div class="invalid-feedback">Please select a course/subject.</div>
+                                <label for="subject">Course / Subject</label>
+                                <div class="invalid-feedback">Please select a subject.</div>
                             </div>
                         </div>
+
+                        <!-- Message -->
                         <div class="col-12">
                             <div class="form-floating">
                                 <textarea class="form-control" placeholder="Leave your message here" id="message" style="height: 120px" required></textarea>
@@ -1111,16 +1116,16 @@ function toggleCourseDetails(button) {
                                 <div class="invalid-feedback">Please enter your message.</div>
                             </div>
                         </div>
+
+                        <!-- Contact Method -->
                         <div class="col-12 text-center">
                             <p class="mb-3">How would you like to contact us?</p>
                             <button type="submit" class="btn btn-primary btn-sm mx-2 glow-icon" name="contactMethod" value="whatsapp">
                                 <i class="fab fa-whatsapp me-2"></i> WhatsApp
                             </button>
-                            <!-- Email Button -->
                             <button type="submit" class="btn btn-danger btn-sm mx-2 glow-icon" name="contactMethod" value="email">
                                 <i class="fas fa-envelope me-2"></i> Email
                             </button>
-                            <!-- Fiverr Button with Logo -->
                             <a href="https://www.fiverr.com/s/WEz8A3X" target="_blank" class="btn btn-success btn-sm mx-2 glow-icon fiverr">
                                 <img src="img/fiverr.png" alt="Fiverr" style="height: 1rem; margin-right: 0.5rem;"> Fiverr
                             </a>
@@ -1129,74 +1134,96 @@ function toggleCourseDetails(button) {
                 </form>
             </div>
         </div>
-        
+
+        <!-- Script -->
         <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-        
-                if (contactForm.checkValidity()) {
-                    const formData = {
-                        name: document.getElementById('name').value,
-                        course: document.getElementById('course').value,
-                        message: document.getElementById('message').value,
-                        contactMethod: event.submitter.value
-                    };
-        
-                    const encodedMessage = encodeURIComponent(
-                        `Name: ${formData.name}\nCourse/Subject: ${formData.course}\n\nMessage: ${formData.message}`
-                    );
-        
-                    if (formData.contactMethod === 'whatsapp') {
-                        window.location.href = `https://wa.me/12815070243?text=${encodedMessage}`;
-                    } else {
-                        window.location.href = `mailto:virtualacademia@yahoo.com?subject=Contact%20Request%20for%20${encodeURIComponent(formData.course)}&body=${encodedMessage}`;
+            document.addEventListener('DOMContentLoaded', function () {
+                const contactForm = document.getElementById('contactForm');
+
+                contactForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    if (contactForm.checkValidity()) {
+                        const formData = {
+                            name: document.getElementById('name').value,
+                            subject: document.getElementById('subject').value,
+                            message: document.getElementById('message').value,
+                            contactMethod: event.submitter.value
+                        };
+
+                        const encodedMessage = encodeURIComponent(
+                            `Name: ${formData.name}\nSubject: ${formData.subject}\n\nMessage: ${formData.message}`
+                        );
+
+                        if (formData.contactMethod === 'whatsapp') {
+                            window.location.href = `https://wa.me/12815070243?text=${encodedMessage}`;
+                        } else {
+                            window.location.href = `mailto:virtualacademia@yahoo.com?subject=Contact%20Request&body=${encodedMessage}`;
+                        }
                     }
-                }
-        
-                contactForm.classList.add('was-validated');
+
+                    contactForm.classList.add('was-validated');
+                });
             });
-        });
         </script>
-        
+
+        <!-- Styles -->
         <style>
-            /* Form validation cleanup */
             .was-validated .form-control:valid,
             .was-validated .form-select:valid {
                 background-image: none !important;
                 border-color: inherit;
                 box-shadow: none;
             }
-        
-            /* Base icon glow transition */
+
             .glow-icon i {
                 transition: all 0.3s ease-in-out;
             }
-        
-            /* Default green glow for general icons */
+
             .glow-icon:hover i {
                 text-shadow: 0 0 8px rgba(0, 255, 0, 0.6), 0 0 12px rgba(0, 255, 0, 0.4);
             }
-        
-            /* Red glow specifically for danger buttons */
+
             .btn-danger.glow-icon:hover i {
                 text-shadow: 0 0 8px rgba(255, 0, 0, 0.6), 0 0 12px rgba(255, 0, 0, 0.4);
             }
-        
-            /* Email-specific blue glow */
-            .glow-icon.email:hover i {
-                text-shadow: 0 0 8px rgba(0, 123, 255, 0.6), 0 0 12px rgba(0, 123, 255, 0.4);
+
+            .icon-tooltip {
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
             }
-        
-            /* WhatsApp-specific green glow */
-            .glow-icon.whatsapp:hover i {
-                text-shadow: 0 0 8px rgba(37, 211, 102, 0.6), 0 0 12px rgba(37, 211, 102, 0.4);
+
+            .icon-tooltip .tooltip-text {
+                visibility: hidden;
+                width: max-content;
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 4px 8px;
+                border-radius: 4px;
+                position: absolute;
+                bottom: 125%;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                font-size: 0.75rem;
+                white-space: nowrap;
+                z-index: 10;
+            }
+
+            .icon-tooltip:hover .tooltip-text {
+                visibility: visible;
+                opacity: 1;
             }
         </style>
+    </div>
 </div>
-<!-- Contact Us Section end -->
+<!-- Contact Us Section End -->
+
+
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" id="contact">
