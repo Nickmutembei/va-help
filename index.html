@@ -967,185 +967,183 @@ function toggleCourseDetails(button) {
     </div>
 </div>
 <!-- Testimonial End -->
- 
 <!-- Contact Us Section -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
     <div class="container">
-        <div class="text-center">
+        <div class="text-center mb-4">
             <h6 class="section-title bg-white text-center text-primary px-3">Contact Us</h6>
             <h1 class="mb-4">Get in Touch</h1>
-            <!-- Speech Bubble Section -->
             <div class="speech-bubble mx-auto mb-4" style="max-width: 600px; padding: 20px; background-color: #f1f1f1; border-radius: 20px; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); position: relative;">
                 <i class="fas fa-comment-dots me-2 text-primary"></i>
                 <p class="lead text-muted mb-0" style="font-size: 1.1rem;">
                     We respond fast and provide the best customer service and support. Your satisfaction is our priority!
                 </p>
-                <!-- Triangle to make the speech bubble shape -->
                 <div style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 20px solid #f1f1f1;"></div>
             </div>
         </div>
-        
- <!-- Contact Form -->
-<div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8 shadow p-4">
-      <form id="contactForm" class="needs-validation" novalidate>
-        <div class="row g-3">
-          
-          <!-- Name Field -->
-          <div class="col-md-6">
-            <div class="form-floating">
-              <input type="text" class="form-control" id="name" placeholder="Your Name" required pattern="[A-Za-z\s]+">
-              <label for="name">Your Name</label>
-              <div class="invalid-feedback">Please provide your name.</div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 shadow p-4 rounded bg-white">
+                <form id="contactForm" class="needs-validation" novalidate>
+                    <div class="row g-3">
+                        <!-- Name -->
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" required pattern="[A-Za-z\s]+">
+                                <label for="name">Your Name</label>
+                                <div class="invalid-feedback">Please provide your name.</div>
+                            </div>
+                        </div>
+                        <!-- Phone -->
+                        <div class="col-md-6">
+                            <label class="form-label d-block">Phone Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text p-0">
+                                    <select class="form-select border-end-0 rounded-end-0" id="countryCode" style="width: 100px;" required></select>
+                                </span>
+                                <input type="tel" class="form-control rounded-start-0" id="phone" placeholder="Phone Number" required pattern="[0-9]+">
+                            </div>
+                            <div class="invalid-feedback">Please provide a valid phone number.</div>
+                        </div>
+                        <!-- Message -->
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave your message here" id="message" style="height: 120px" required></textarea>
+                                <label for="message">Your Message</label>
+                                <div class="invalid-feedback">Please enter your message.</div>
+                            </div>
+                        </div>
+                        <!-- Contact Method -->
+                        <div class="col-12 text-center">
+                            <p class="mb-3">How would you like to contact us?</p>
+                            <button type="submit" class="btn btn-primary btn-sm mx-2 glow-icon" name="contactMethod" value="whatsapp">
+                                <i class="fab fa-whatsapp me-2"></i> WhatsApp
+                            </button>
+                            <button type="submit" class="btn btn-danger btn-sm mx-2 glow-icon" name="contactMethod" value="email">
+                                <i class="fas fa-envelope me-2"></i> Email
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-          </div>
-  
-          <!-- Phone Field with Country Code -->
-          <div class="col-md-6">
-            <label class="form-label d-block">Phone Number</label>
-            <div class="input-group">
-              <span class="input-group-text p-0">
-                <select class="form-select border-end-0 rounded-end-0" id="countryCode" style="width: 100px;" required></select>
-              </span>
-              <input type="tel" class="form-control rounded-start-0" id="phone" placeholder="Phone Number" required pattern="[0-9]+">
-            </div>
-            <div class="invalid-feedback">Please provide a valid phone number.</div>
-          </div>
-  
-          <!-- Message Field -->
-          <div class="col-12">
-            <div class="form-floating">
-              <textarea class="form-control" placeholder="Leave your message here" id="message" style="height: 120px" required></textarea>
-              <label for="message">Your Message</label>
-              <div class="invalid-feedback">Please enter your message.</div>
-            </div>
-          </div>
-  
-          <!-- Submit Buttons -->
-          <div class="col-12 text-center">
-            <p class="mb-3">How would you like to contact us?</p>
-            <button type="submit" class="btn btn-primary btn-sm mx-2 glow-icon" name="contactMethod" value="whatsapp">
-              <i class="fab fa-whatsapp me-2"></i> WhatsApp
-            </button>
-            <button type="submit" class="btn btn-danger btn-sm mx-2 glow-icon" name="contactMethod" value="email">
-              <i class="fas fa-envelope me-2"></i> Email
-            </button>
-          </div>
         </div>
-      </form>
     </div>
-  </div>
-  
-  <!-- JavaScript -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
+</div>
+
+<!-- Scripts -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
     const countryCodeSelect = document.getElementById('countryCode');
-  
+
     fetch('https://restcountries.com/v3.1/all')
-      .then(response => response.json())
-      .then(data => {
-        const countries = data
-          .map(country => {
-            const code3 = country.cca3; // ISO alpha-3
-            const dialRoot = country.idd?.root;
-            const suffixes = country.idd?.suffixes;
-            if (code3 && dialRoot && suffixes && suffixes.length > 0) {
-              return {
-                code: code3,
-                dial: dialRoot + suffixes[0]
-              };
-            }
-            return null;
-          })
-          .filter(Boolean)
-          .sort((a, b) => a.code.localeCompare(b.code));
-  
-        countries.forEach(({ code, dial }) => {
-          const option = document.createElement('option');
-          option.value = dial;
-          option.textContent = `${code} (${dial})`;
-          countryCodeSelect.appendChild(option);
+        .then(res => res.json())
+        .then(data => {
+            const countries = data
+                .map(c => {
+                    const root = c.idd?.root;
+                    const suffix = c.idd?.suffixes?.[0];
+                    const code = c.cca3;
+                    return (root && suffix && code) ? { code, dial: root + suffix } : null;
+                })
+                .filter(Boolean)
+                .sort((a, b) => a.code.localeCompare(b.code));
+
+            countries.forEach(({ code, dial }) => {
+                const option = document.createElement('option');
+                option.value = dial;
+                option.textContent = `${code} (${dial})`;
+                countryCodeSelect.appendChild(option);
+            });
+        })
+        .catch(() => {
+            const fallback = [
+                { code: 'USA', dial: '+1' },
+                { code: 'GBR', dial: '+44' },
+                { code: 'IND', dial: '+91' },
+                { code: 'NGA', dial: '+234' },
+                { code: 'DEU', dial: '+49' },
+                { code: 'FRA', dial: '+33' }
+            ];
+            fallback.forEach(({ code, dial }) => {
+                const option = document.createElement('option');
+                option.value = dial;
+                option.textContent = `${code} (${dial})`;
+                countryCodeSelect.appendChild(option);
+            });
         });
-      })
-      .catch(() => {
-        // Fallback in case fetch fails
-        const fallback = [
-          { code: 'USA', dial: '+1' },
-          { code: 'GBR', dial: '+44' },
-          { code: 'IND', dial: '+91' },
-          { code: 'NGA', dial: '+234' },
-          { code: 'DEU', dial: '+49' },
-          { code: 'FRA', dial: '+33' }
-        ];
-        fallback.forEach(({ code, dial }) => {
-          const option = document.createElement('option');
-          option.value = dial;
-          option.textContent = `${code} (${dial})`;
-          countryCodeSelect.appendChild(option);
-        });
-      });
-  
-    // Form validation and submission
+
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-  
-      if (contactForm.checkValidity()) {
-        const formData = {
-          name: document.getElementById('name').value,
-          phone: document.getElementById('countryCode').value + document.getElementById('phone').value,
-          message: document.getElementById('message').value,
-          contactMethod: event.submitter.value
-        };
-  
-        const encodedMessage = encodeURIComponent(
-          `Name: ${formData.name}\nPhone: ${formData.phone}\n\nMessage: ${formData.message}`
-        );
-  
-        if (formData.contactMethod === 'whatsapp') {
-          window.location.href = `https://wa.me/12815070243?text=${encodedMessage}`;
-        } else {
-          window.location.href = `mailto:virtualacademia@yahoo.com?subject=Contact%20Request&body=${encodedMessage}`;
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (contactForm.checkValidity()) {
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('countryCode').value + document.getElementById('phone').value,
+                message: document.getElementById('message').value,
+                contactMethod: event.submitter.value
+            };
+
+            const encodedMessage = encodeURIComponent(
+                `Name: ${formData.name}\nPhone: ${formData.phone}\n\nMessage: ${formData.message}`
+            );
+
+            if (formData.contactMethod === 'whatsapp') {
+                window.location.href = `https://wa.me/12815070243?text=${encodedMessage}`;
+            } else {
+                window.location.href = `mailto:virtualacademia@yahoo.com?subject=Contact%20Request&body=${encodedMessage}`;
+            }
         }
-      }
-  
-      contactForm.classList.add('was-validated');
+
+        contactForm.classList.add('was-validated');
     });
-  });
-  </script>
-  
-  <!-- Styles -->
-  <style>
-  /* Disable green checkmark on valid fields */
-  .was-validated .form-control:valid,
-  .was-validated .form-select:valid {
+});
+</script>
+
+<!-- Styles -->
+<style>
+.was-validated .form-control:valid,
+.was-validated .form-select:valid {
     background-image: none !important;
     border-color: inherit;
     box-shadow: none;
-  }
-  
-  /* Icon glow on hover */
-  .glow-icon i {
+}
+
+/* Button Glow */
+.glow-icon {
+    transition: box-shadow 0.3s ease;
+}
+.glow-icon:hover {
+    box-shadow: 0 0 12px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.3);
+}
+.btn-danger.glow-icon:hover {
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+/* Icon Glow */
+.glow-icon i {
     transition: all 0.3s ease-in-out;
-  }
-  .glow-icon:hover i {
+}
+.glow-icon:hover i {
     text-shadow: 0 0 8px rgba(0, 255, 0, 0.6), 0 0 12px rgba(0, 255, 0, 0.4);
-  }
-  .btn-danger.glow-icon:hover i {
+}
+.btn-danger.glow-icon:hover i {
     text-shadow: 0 0 8px rgba(255, 0, 0, 0.6), 0 0 12px rgba(255, 0, 0, 0.4);
-  }
-  
-  /* Input Group Styling */
-  .input-group-text {
+}
+
+/* Input group */
+.input-group-text {
     background-color: transparent;
     border-right: none;
-  }
-  .form-select {
+}
+.form-select {
     background-position: right 0.5rem center;
-  }
-  </style>
-  
+}
+</style>
+
+
+
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" id="contact">
     <div class="container py-5">
