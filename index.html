@@ -62,9 +62,9 @@
     <div class="container">
         <!-- Brand/Logo -->
         <a href="index.html" class="navbar-brand d-flex flex-column align-items-center me-auto">
-            <i class="fas fa-graduation-cap fa-3x me-3" style="color: #2b435c;"></i>
+            <img src="img/jjj.png" alt="Academia Icon" style="height: 48px; width: auto; margin-right: 12px;">
             <div>
-                <h2 class="m-0 fw-bold" style="background: linear-gradient(to right, rgb(167, 110, 4), blue); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Virtual Academia</h2>
+                <h2 class="m-0 fw-bold" style="background: linear-gradient(to right, rgb(0, 0, 0), bluergb(0, 0, 0)webkit-background-clip: text; -webkit-text-fill-color: transparent;">Virtual Academia</h2>
             </div>
         </a>
         
@@ -618,8 +618,17 @@
                         </div>
                     </div>
                     <div class="text-center p-3">
-                        <button class="btn btn-primary read-more-btn" onclick="toggleCourseDetails(this)">Read More</button>
+                        <button class="btn btn-primary read-more-btn" onclick="toggleCourseDetails(this)" style="transition: box-shadow 0.3s;">
+                            Read More
+                        </button>
                     </div>
+                    
+                    <style>
+                        .read-more-btn:hover {
+                            box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+                        }
+                    </style>
+                    
                 </div>
             </div>
         </div>
