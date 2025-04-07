@@ -1160,9 +1160,9 @@ function toggleCourseDetails(button) {
                         <!-- File Upload -->
                         <div class="col-12 text-center mt-4">
                             <p class="mb-3">Upload your document (max 100MB):</p>
-                            <input type="file" class="form-control-file" id="documentUpload" name="documentUpload" accept=".pdf,.doc,.docx,.txt" required>
+                            <input type="file" class="form-control-file" id="documentUpload" name="documentUpload" required>
                             <div class="invalid-feedback">Please upload your document.</div>
-                            <small class="text-muted">Accepted formats: PDF, DOC, DOCX, TXT</small>
+                            <small class="text-muted">All document formats accepted</small>
                         </div>
 
                         <!-- Contact Method -->
@@ -1200,18 +1200,12 @@ document.getElementById('subject').addEventListener('change', function() {
 document.getElementById('documentUpload').addEventListener('change', function() {
     const fileInput = this;
     const maxSize = 100 * 1024 * 1024; // 100MB
-    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
     
     if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
         
         if (file.size > maxSize) {
             alert('File is too large. Maximum size is 100MB.');
-            fileInput.value = '';
-        }
-        
-        if (!allowedTypes.includes(file.type)) {
-            alert('Invalid file type. Please upload PDF, DOC, DOCX, or TXT files.');
             fileInput.value = '';
         }
     }
@@ -1298,95 +1292,14 @@ document.getElementById('documentUpload').addEventListener('change', function() 
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-6 {
+        width: 100%;
+    }
+}
 </style>
-
-        <!-- Script -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const contactForm = document.getElementById('contactForm');
-
-                contactForm.addEventListener('submit', function (event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                    if (contactForm.checkValidity()) {
-                        const formData = {
-                            name: document.getElementById('name').value,
-                            subject: document.getElementById('subject').value,
-                            message: document.getElementById('message').value,
-                            contactMethod: event.submitter.value
-                        };
-
-                        const encodedMessage = encodeURIComponent(
-                            `Name: ${formData.name}\nSubject: ${formData.subject}\n\nMessage: ${formData.message}`
-                        );
-
-                        if (formData.contactMethod === 'whatsapp') {
-                            window.location.href = `https://wa.me/12815070243?text=${encodedMessage}`;
-                        } else {
-                            window.location.href = `mailto:virtualacademia01@gmail.com?subject=Contact%20Request&body=${encodedMessage}`;
-                        }
-                    }
-
-                    contactForm.classList.add('was-validated');
-                });
-            });
-        </script>
-
-        <!-- Styles -->
-        <style>
-            .was-validated .form-control:valid,
-            .was-validated .form-select:valid {
-                background-image: none !important;
-                border-color: inherit;
-                box-shadow: none;
-            }
-
-            .glow-icon i {
-                transition: all 0.3s ease-in-out;
-            }
-
-            .glow-icon:hover i {
-                text-shadow: 0 0 8px rgba(0, 255, 0, 0.6), 0 0 12px rgba(0, 255, 0, 0.4);
-            }
-
-            .btn-danger.glow-icon:hover i {
-                text-shadow: 0 0 8px rgba(255, 0, 0, 0.6), 0 0 12px rgba(255, 0, 0, 0.4);
-            }
-
-            .icon-tooltip {
-                position: relative;
-                display: inline-block;
-                cursor: pointer;
-            }
-
-            .icon-tooltip .tooltip-text {
-                visibility: hidden;
-                width: max-content;
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                padding: 4px 8px;
-                border-radius: 4px;
-                position: absolute;
-                bottom: 125%;
-                left: 50%;
-                transform: translateX(-50%);
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                font-size: 0.75rem;
-                white-space: nowrap;
-                z-index: 10;
-            }
-
-            .icon-tooltip:hover .tooltip-text {
-                visibility: visible;
-                opacity: 1;
-            }
-        </style>
-    </div>
-</div>
-<!-- Contact Us Section End -->
 
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" id="contact">
