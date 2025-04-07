@@ -1,4 +1,5 @@
 <?php
+// upload_handler.php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Process form data
     $name = htmlspecialchars($_POST['name']);
@@ -17,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         $maxFileSize = 100 * 1024 * 1024; // 100MB
-        $fileExtension = strtolower(pathinfo($_FILES['documentUpload']['name'], PATHINFO_EXTENSION));
         $fileName = uniqid() . '_' . preg_replace('/[^A-Za-z0-9\.\-]/', '', $_FILES['documentUpload']['name']);
         $targetPath = $uploadDir . $fileName;
         
@@ -86,5 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         exit();
     }
+} else {
+    // If someone tries to access this file directly
+    header("Location: index.html");
+    exit();
 }
 ?>
