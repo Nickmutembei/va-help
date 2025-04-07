@@ -1100,7 +1100,6 @@ function toggleCourseDetails(button) {
         100% { transform: translateX(-50%); } /* Move by half the width of the container */
     }
 </style>
-
 <!-- Contact Us Section -->
 <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
     <div class="container">
@@ -1118,36 +1117,74 @@ function toggleCourseDetails(button) {
 
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 shadow p-4">
-                <form id="contactForm" class="needs-validation" novalidate>
+                <form id="contactForm" class="needs-validation" novalidate action="upload_handler.php" method="POST" enctype="multipart/form-data">
                     <div class="row g-3">
                         <!-- Name -->
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name" required pattern="[A-Za-z\s]+">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required pattern="[A-Za-z\s]+">
                                 <label for="name">Your Name</label>
                                 <div class="invalid-feedback">Please provide your name.</div>
                             </div>
                         </div>
 
                         <!-- Subject Dropdown -->
-<div class="col-md-6">
-    <div class="form-floating">
-        <select class="form-select" id="subject" required>
-            <option value="" disabled selected>Select a Subject</option>
-            <option value="Calculus & Advanced Math">Calculus & Advanced Math</option>
-            <option value="Physics (All Levels)">Sciences (Chemistry, Biology & Physics)</option>
-            <option value="Organic Chemistry"> Chemistry</option>
-            <option value="Molecular Biology">Nursing & Biology</option>
-            <option value="Academic Writing & Research">Academic Writing & Research</option>
-            <option value="Programming (Python/Java)">Programming (R studio/SPSS/Tableau)</option>
-            <option value="Statistics & Data Analysis">Statistics & Data Analysis</option>
-            <option value="Business & Finance">Business & Finance</option>
-            <option value="Other" data-placeholder="please specify">Other</option>
-        </select>
-        <label for="subject">Course / Subject</label>
-        <div class="invalid-feedback">Please select a subject.</div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select class="form-select" id="subject" name="subject" required>
+                                    <option value="" disabled selected>Select a Subject</option>
+                                    <option value="Calculus & Advanced Math">Calculus & Advanced Math</option>
+                                    <option value="Physics (All Levels)">Sciences (Chemistry, Biology & Physics)</option>
+                                    <option value="Organic Chemistry"> Chemistry</option>
+                                    <option value="Molecular Biology">Nursing & Biology</option>
+                                    <option value="Academic Writing & Research">Academic Writing & Research</option>
+                                    <option value="Programming (Python/Java)">Programming (R studio/SPSS/Tableau)</option>
+                                    <option value="Statistics & Data Analysis">Statistics & Data Analysis</option>
+                                    <option value="Business & Finance">Business & Finance</option>
+                                    <option value="Other" data-placeholder="please specify">Other</option>
+                                </select>
+                                <label for="subject">Course / Subject</label>
+                                <div class="invalid-feedback">Please select a subject.</div>
+                            </div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave your message here" id="message" name="message" style="height: 120px" required></textarea>
+                                <label for="message">Your Message</label>
+                                <div class="invalid-feedback">Please enter your message.</div>
+                            </div>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div class="col-12 text-center mt-4">
+                            <p class="mb-3">Upload your document (max 100MB):</p>
+                            <input type="file" class="form-control-file" id="documentUpload" name="documentUpload" accept=".pdf,.doc,.docx,.txt" required>
+                            <div class="invalid-feedback">Please upload your document.</div>
+                            <small class="text-muted">Accepted formats: PDF, DOC, DOCX, TXT</small>
+                        </div>
+
+                        <!-- Contact Method -->
+                        <div class="col-12 text-center">
+                            <p class="mb-3">How would you like to contact us?</p>
+                            <button type="submit" class="btn btn-primary btn-sm mx-2 glow-icon" name="contactMethod" value="whatsapp">
+                                <i class="fab fa-whatsapp me-2"></i> WhatsApp
+                            </button>
+                            <button type="submit" class="btn btn-danger btn-sm mx-2 glow-icon" name="contactMethod" value="email">
+                                <i class="fas fa-envelope me-2"></i> Email
+                            </button>
+                            <a href="https://www.fiverr.com/s/WEz8A3X" target="_blank" class="btn btn-success btn-sm mx-2 glow-icon fiverr">
+                                <img src="img/fiverr.png" alt="Fiverr" style="height: 1rem; margin-right: 0.5rem;"> Fiverr
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+<!-- Contact Us Section End -->
 
 <script>
 document.getElementById('subject').addEventListener('change', function() {
@@ -1156,6 +1193,27 @@ document.getElementById('subject').addEventListener('change', function() {
         this.setAttribute('placeholder', selectedOption.getAttribute('data-placeholder'));
     } else {
         this.removeAttribute('placeholder');
+    }
+});
+
+// Client-side file validation
+document.getElementById('documentUpload').addEventListener('change', function() {
+    const fileInput = this;
+    const maxSize = 100 * 1024 * 1024; // 100MB
+    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/plain'];
+    
+    if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        
+        if (file.size > maxSize) {
+            alert('File is too large. Maximum size is 100MB.');
+            fileInput.value = '';
+        }
+        
+        if (!allowedTypes.includes(file.type)) {
+            alert('Invalid file type. Please upload PDF, DOC, DOCX, or TXT files.');
+            fileInput.value = '';
+        }
     }
 });
 </script>
@@ -1170,35 +1228,77 @@ document.getElementById('subject').addEventListener('change', function() {
     pointer-events: none;
     opacity: 0.6;
 }
+
+.was-validated .form-control:valid,
+.was-validated .form-select:valid {
+    background-image: none !important;
+    border-color: inherit;
+    box-shadow: none;
+}
+
+.glow-icon i {
+    transition: all 0.3s ease-in-out;
+}
+
+.glow-icon:hover i {
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.6), 0 0 12px rgba(0, 255, 0, 0.4);
+}
+
+.btn-danger.glow-icon:hover i {
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.6), 0 0 12px rgba(255, 0, 0, 0.4);
+}
+
+.icon-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.icon-tooltip .tooltip-text {
+    visibility: hidden;
+    width: max-content;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.icon-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* File upload styling */
+.form-control-file {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control-file:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
 </style>
-
-                        <!-- Message -->
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave your message here" id="message" style="height: 120px" required></textarea>
-                                <label for="message">Your Message</label>
-                                <div class="invalid-feedback">Please enter your message.</div>
-                            </div>
-                        </div>
-<!-- File Upload -->
-<div class="col-12 text-center mt-4">
-    <p class="mb-3">Upload your document (max 100MB):</p>
-    <input type="file" class="form-control-file" name="documentUpload" accept=".pdf,.doc,.docx,.txt">
-</div>
-                       <!-- Contact Method -->
-<div class="col-12 text-center">
-    <p class="mb-3">How would you like to contact us?</p>
-    <button type="submit" class="btn btn-primary btn-sm mx-2 glow-icon" name="contactMethod" value="whatsapp">
-        <i class="fab fa-whatsapp me-2"></i> WhatsApp
-    </button>
-    <button type="submit" class="btn btn-danger btn-sm mx-2 glow-icon" name="contactMethod" value="email">
-        <i class="fas fa-envelope me-2"></i> Email
-    </button>
-    <a href="https://www.fiverr.com/s/WEz8A3X" target="_blank" class="btn btn-success btn-sm mx-2 glow-icon fiverr">
-        <img src="img/fiverr.png" alt="Fiverr" style="height: 1rem; margin-right: 0.5rem;"> Fiverr
-    </a>
-</div>
-
 
         <!-- Script -->
         <script>
